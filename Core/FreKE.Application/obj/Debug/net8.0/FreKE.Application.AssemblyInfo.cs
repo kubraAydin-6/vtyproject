@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FreKE.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fec4b85f6fa6c230bcfc5db4bf85634ce7849b01")]
 [assembly: System.Reflection.AssemblyProductAttribute("FreKE.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FreKE.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

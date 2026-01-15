@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.23" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\FreKE.Application\FreKE.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FreKE.Infrastructure\FreKE.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FreKE.Persistance\FreKE.Persistence.csproj" />
   </ItemGroup>
 

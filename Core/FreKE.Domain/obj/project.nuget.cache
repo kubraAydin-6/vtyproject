@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "OySPKA3S9D4=",
+  "dgSpecHash": "hqedKLfMIOk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kübra\\Desktop\\VtyProje\\FreKE\\Core\\FreKE.Domain\\FreKE.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\tolga\\OneDrive\\Masaüstü\\Yeni klasör\\vtyproject\\Core\\FreKE.Domain\\FreKE.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tolga\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\tolga\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

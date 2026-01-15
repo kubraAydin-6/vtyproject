@@ -33,7 +33,8 @@ namespace FreKE.API.Controllers
                 Name = request.Name,
                 Surname = request.Surname,
                 Email = request.Email,
-                Phone = request.Phone
+                Phone = request.Phone,
+                Password = request.Password
             };
             await _userRepository.AddAsync(user);
             

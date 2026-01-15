@@ -9,3 +9,16 @@ C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.
 C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Domain\obj\Debug\net8.0\refint\FreKE.Domain.dll
 C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.pdb
 C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Domain\obj\Debug\net8.0\ref\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\bin\Debug\net8.0\FreKE.Domain.deps.json
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\bin\Debug\net8.0\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\bin\Debug\net8.0\FreKE.Domain.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.AssemblyInfoInputs.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.AssemblyInfo.cs
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.sourcelink.json
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\refint\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\ref\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Domain\obj\Debug\net8.0\FreKE.Domain.csproj.AssemblyReference.cache

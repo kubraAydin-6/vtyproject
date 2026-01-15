@@ -13,7 +13,7 @@ namespace FreKE.Domain.Entities
         public string Surname { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-
+        public string Password { get; set; }
 
 
         public ICollection<Job> PostedJobs { get; set; }  // Job ilişkisi (İşveren tarafından açılmış işler)

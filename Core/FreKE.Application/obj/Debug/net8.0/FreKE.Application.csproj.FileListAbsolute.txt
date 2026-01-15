@@ -13,3 +13,19 @@ C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\F
 C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\refint\FreKE.Application.dll
 C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.pdb
 C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\ref\FreKE.Application.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Application.deps.json
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Application.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Application.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Domain.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.csproj.AssemblyReference.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.AssemblyInfoInputs.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.AssemblyInfo.cs
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.csproj.CoreCompileInputs.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.sourcelink.json
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Ap.64A0139B.Up2Date
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\refint\FreKE.Application.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Core\FreKE.Application\obj\Debug\net8.0\ref\FreKE.Application.dll

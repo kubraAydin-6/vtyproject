@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "FreKE.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FreKE.Application.Features.Users.DTOs.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FreKE.API.Controllers.CommentController",
     "Method": "GetByIdAsync",
     "RelativePath": "api/Comment",

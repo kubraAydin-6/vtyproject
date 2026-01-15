@@ -15,3 +15,21 @@ C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Infrastructure\obj\D
 C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\refint\FreKE.Infrastructure.dll
 C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.pdb
 C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\ref\FreKE.Infrastructure.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Infrastructure.deps.json
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Infrastructure.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Infrastructure.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Application.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Domain.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Application.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\bin\Debug\net8.0\FreKE.Domain.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.AssemblyInfo.cs
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.sourcelink.json
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.In.5CE4740E.Up2Date
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\refint\FreKE.Infrastructure.dll
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\FreKE.Infrastructure.pdb
+C:\Users\tolga\OneDrive\Masaüstü\Yeni klasör\vtyproject\Infrastructure\FreKE.Infrastructure\obj\Debug\net8.0\ref\FreKE.Infrastructure.dll

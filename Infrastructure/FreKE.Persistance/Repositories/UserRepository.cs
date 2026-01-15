@@ -2,6 +2,7 @@
 using FreKE.Application.Features.Users.DTOs;
 using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
+using FreKE.Domain.Providers;
 using FreKE.Persistence.Helpers;
 using Npgsql;
 using System;
@@ -15,10 +16,12 @@ namespace FreKE.Persistence.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly IFreKEDbHelper _dbHelper;
+        private readonly IUserProvider _userProvider;
 
-        public UserRepository(IFreKEDbHelper dbHelper)
+        public UserRepository(IFreKEDbHelper dbHelper, IUserProvider userProvider)
         {
             _dbHelper = dbHelper;
+            _userProvider = userProvider;
         }
 
         public async Task<User> GetByIdAsync(Guid id)
@@ -35,14 +38,15 @@ namespace FreKE.Persistence.Repositories
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             await using var transaction = await connection.BeginTransactionAsync();
-            var query = @"insert into users (name, surname, email, phone, createddate, updateddate)
-            values (@name,@surname, @email, @phone, @createddate, @updateddate)";
+            var query = @"insert into users (name, surname, email, password, phone, createddate, updateddate)
+            values (@name,@surname, @email, @password, @phone, @createddate, @updateddate)";
 
             var parameters = new
             {
                 user.Name,
                 user.Surname,
                 user.Email,
+                password = _userProvider.EncryptPassword(user.Password, user.Email),
                 user.Phone,
                 user.CreatedDate,
                 user.UpdatedDate
@@ -52,6 +56,7 @@ namespace FreKE.Persistence.Repositories
             command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("name", parameters.Name));
             command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("surname", parameters.Surname));
             command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("email", parameters.Email));
+            command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("password", parameters.password));
             command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("phone", parameters.Phone));
             command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("createdDate", parameters.CreatedDate));
             command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("updatedDate", parameters.UpdatedDate));
@@ -195,6 +200,17 @@ namespace FreKE.Persistence.Repositories
             var result = await _dbHelper.QueryAsync<UserCommentDTO>(query, parameters);
 
             return result.ToList();
+        }
+
+        public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+
+            var query = @"Select * from users where email=@email";
+            var parameters = new { email };
+
+            return await _dbHelper.QueryFirstOrDefaultAsync<User>(query, parameters, cancellationToken: cancellationToken);
+
         }
     }
 }

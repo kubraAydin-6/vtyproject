@@ -28,6 +28,7 @@ namespace FreKE.Persistence
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ILikeRepository, LikeRepository>();
             services.AddScoped<IPriceOfferRepository, PriceOfferRepository>();
+            services.AddScoped<ILogRepository, LogRepository>();
             return services;
         }
     }

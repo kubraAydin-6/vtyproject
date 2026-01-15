@@ -19,5 +19,6 @@ namespace FreKE.Application.Repositories
         Task<int> AddAsync(User user);
         Task<bool> UpdateAsync(User user);
         Task<bool> DeleteAsync(Guid id);
+        Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
     }
 }

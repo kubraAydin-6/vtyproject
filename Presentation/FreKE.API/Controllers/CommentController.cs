@@ -11,10 +11,11 @@ namespace FreKE.API.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentRepository _commentRepository;
-
-        public CommentController(ICommentRepository commentRepository)
+        private readonly IHttpContextAccessor _contextAccessor;
+        public CommentController(ICommentRepository commentRepository, IHttpContextAccessor contextAccessor)
         {
             _commentRepository = commentRepository;
+            _contextAccessor = contextAccessor;
         }
 
         [HttpGet]
