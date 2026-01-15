@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FreKE.Domain/1.0.0": {
+        "runtime": {
+          "FreKE.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FreKE.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

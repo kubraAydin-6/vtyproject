@@ -1,0 +1,15 @@
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Application.deps.json
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Application.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Application.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Domain.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\bin\Debug\net8.0\FreKE.Domain.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.csproj.AssemblyReference.cache
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.AssemblyInfoInputs.cache
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.AssemblyInfo.cs
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.csproj.CoreCompileInputs.cache
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Ap.64A0139B.Up2Date
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\refint\FreKE.Application.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\FreKE.Application.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Core\FreKE.Application\obj\Debug\net8.0\ref\FreKE.Application.dll

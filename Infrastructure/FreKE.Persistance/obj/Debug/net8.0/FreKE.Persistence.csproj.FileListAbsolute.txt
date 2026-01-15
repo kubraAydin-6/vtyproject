@@ -1,0 +1,17 @@
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Persistence.deps.json
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Persistence.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Persistence.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Application.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Domain.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Application.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\bin\Debug\net8.0\FreKE.Domain.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.csproj.AssemblyReference.cache
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.AssemblyInfoInputs.cache
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.AssemblyInfo.cs
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Pe.08367572.Up2Date
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\refint\FreKE.Persistence.dll
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\FreKE.Persistence.pdb
+C:\Users\kübra\Desktop\VtyProje\FreKE\Infrastructure\FreKE.Persistance\obj\Debug\net8.0\ref\FreKE.Persistence.dll

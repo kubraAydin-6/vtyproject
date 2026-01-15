@@ -1,0 +1,55 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FreKE.Infrastructure/1.0.0": {
+        "dependencies": {
+          "FreKE.Application": "1.0.0"
+        },
+        "runtime": {
+          "FreKE.Infrastructure.dll": {}
+        }
+      },
+      "FreKE.Application/1.0.0": {
+        "dependencies": {
+          "FreKE.Domain": "1.0.0"
+        },
+        "runtime": {
+          "FreKE.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "FreKE.Domain/1.0.0": {
+        "runtime": {
+          "FreKE.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FreKE.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FreKE.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FreKE.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
