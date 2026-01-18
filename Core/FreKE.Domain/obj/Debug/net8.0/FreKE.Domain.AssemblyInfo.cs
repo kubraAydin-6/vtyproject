@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FreKE.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fec4b85f6fa6c230bcfc5db4bf85634ce7849b01")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+182e09aa04e35666b0c380a8ce9dac32494de91c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FreKE.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FreKE.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -75,13 +75,5 @@ namespace FreKE.Persistence.Repositories
 
             return true;
         }
-
-        public async Task<List<Like>> GetAsync()
-        {
-            await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = "Select * from likes";
-            var result = await connection.QueryAsync<Like>(query);
-            return result.ToList();
-        }
     }
 }

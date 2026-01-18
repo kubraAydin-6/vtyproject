@@ -17,7 +17,7 @@ namespace FreKE.API.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet]
+        [HttpGet("{id}/UserInformation")]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             var user = await _userRepository.GetByIdAsync(id);
@@ -25,7 +25,7 @@ namespace FreKE.API.Controllers
             return Ok(user);
         }
         
-        [HttpPost]
+        [HttpPost("UserInformation")]
         public async Task<IActionResult> CreateAsync(CreateUserRequest request)
         {
             User user = new()
@@ -41,7 +41,7 @@ namespace FreKE.API.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPut("UserInformation")]
         public async Task<IActionResult> UpdateAsync(UpdateUserRequest request)
         {
             var user = await _userRepository.GetByIdAsync(request.Id);
@@ -57,7 +57,7 @@ namespace FreKE.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}/UserInformation")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             User user = await _userRepository.GetByIdAsync(id);
@@ -68,35 +68,35 @@ namespace FreKE.API.Controllers
 
         }
 
-        [HttpGet("SumLike")]
+        [HttpGet("UsersTotalLikes")]
         public async Task<IActionResult> GetSumLikeAsync(Guid id)
         {
             var users = await _userRepository.GetSumLikeAsync(id);
             return Ok(users);
         }
 
-        [HttpGet("SumComment")]
+        [HttpGet("UsersTotalComment")]
         public async Task<IActionResult> GetSumCommentAsync(Guid id)
         {
             var users = await _userRepository.GetSumCommentAsync(id);
             return Ok(users);
         }
 
-        [HttpGet("{id}/jobs")]
+        [HttpGet("{id}/UserOwnedJobs")]
         public async Task<IActionResult> GetJobUserAsync(Guid id)
         {
             var users = await _userRepository.GetJobUserAsync(id);
             return Ok(users);
         }
 
-        [HttpGet("{id}/jobsby")]
+        [HttpGet("{id}/UserTakenJobs")]
         public async Task<IActionResult> GetJobUserByAsync(Guid id)
         {
             var users = await _userRepository.GetJobUserByAsync(id);
             return Ok(users);
         }
 
-        [HttpGet("{id}/commentsAll")]
+        [HttpGet("{id}/UserCommentsAll")]
         public async Task<IActionResult> GetByIdCommentsAll(Guid id)
         {
             var users = await _userRepository.GetByIdCommentsAll(id);

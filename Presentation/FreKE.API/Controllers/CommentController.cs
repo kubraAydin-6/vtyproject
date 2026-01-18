@@ -25,12 +25,6 @@ namespace FreKE.API.Controllers
 
             return Ok(comments);
         }
-        [HttpGet("ListCommentById")]
-        public async Task<IActionResult> GetAsync(Guid id)
-        {
-            var comments = await _commentRepository.GetAsync(id);
-            return Ok(comments);
-        }
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateCommentRequest request)
         {

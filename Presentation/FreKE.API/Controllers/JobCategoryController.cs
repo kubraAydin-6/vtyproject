@@ -60,5 +60,11 @@ namespace FreKE.API.Controllers
             await _jobCategoryRepository.DeleteAsync(id);
             return Ok();
         }
+        [HttpGet("TotalJobs")]
+        public async Task<IActionResult> JobCategoryTotalAsync()
+        {
+            var result = await _jobCategoryRepository.JobCategoryTotalAsync();
+            return Ok(result);
+        }
     }
 }

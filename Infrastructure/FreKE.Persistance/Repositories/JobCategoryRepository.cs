@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using FreKE.Application.Features.JobCategories.DTOs;
 using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
 using FreKE.Persistence.Helpers;
@@ -107,6 +108,22 @@ namespace FreKE.Persistence.Repositories
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             var query = "Select * from jobcategories";
             var result = await connection.QueryAsync<JobCategory>(query);
+            return result.ToList();
+        }
+
+        public async Task<List<GetJobCategoryTotalDTO>> JobCategoryTotalAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"select
+                jc.Id AS Id,
+                jc.Name AS Name,      
+                COUNT(j.Id) AS TotalJobs
+                FROM JobCategories jc           
+                LEFT JOIN Jobs j                
+                ON j.JobCategoryId = jc.Id
+                GROUP BY jc.Id,jc.Name";
+
+            var result = await connection.QueryAsync<GetJobCategoryTotalDTO>(query);
             return result.ToList();
         }
     }

@@ -23,7 +23,7 @@ namespace FreKE.API.Controllers
 
             return Ok(priceOffer);
         }
-        [HttpGet("List")]
+        [HttpGet("{jobId}/PriceOfferList")]
         public async Task<IActionResult> GetAsync(Guid? id)
         {
             var priceOffers = await _priceOfferRepository.GetAsync(id.Value);

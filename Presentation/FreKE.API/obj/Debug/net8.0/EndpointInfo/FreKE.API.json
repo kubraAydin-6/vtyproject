@@ -116,28 +116,6 @@
         }
       }
     },
-    "/api/Comment/ListCommentById": {
-      "get": {
-        "tags": [
-          "Comment"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Comment/{id}": {
       "delete": {
         "tags": [
@@ -161,7 +139,7 @@
         }
       }
     },
-    "/api/Job": {
+    "/api/Job/JobInformation": {
       "get": {
         "tags": [
           "Job"
@@ -241,7 +219,7 @@
         }
       }
     },
-    "/api/Job/List/CategoryId": {
+    "/api/Job/{CategoryId}/JobList": {
       "get": {
         "tags": [
           "Job"
@@ -253,6 +231,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "CategoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -284,7 +270,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Job/JobStatusInformation": {
       "put": {
         "tags": [
           "Job"
@@ -292,8 +280,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -301,6 +288,88 @@
           },
           {
             "name": "employerid",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Job/TotalPriceOfferJob": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Job/JobDateTotal": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Job/JobOfTheWeek": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Job/JobOfTheMonth": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Job/JobOfTheDay": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Job/JobCategoryOfTheWeek": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -430,6 +499,18 @@
         }
       }
     },
+    "/api/JobCategory/TotalJobs": {
+      "get": {
+        "tags": [
+          "JobCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Like": {
       "get": {
         "tags": [
@@ -481,18 +562,6 @@
         }
       }
     },
-    "/api/Like/List": {
-      "get": {
-        "tags": [
-          "Like"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Like/{id}": {
       "delete": {
         "tags": [
@@ -508,6 +577,18 @@
               "format": "uuid"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Log": {
+      "get": {
+        "tags": [
+          "Log"
         ],
         "responses": {
           "200": {
@@ -596,7 +677,7 @@
         }
       }
     },
-    "/api/PriceOffer/List": {
+    "/api/PriceOffer/{jobId}/PriceOfferList": {
       "get": {
         "tags": [
           "PriceOffer"
@@ -608,6 +689,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -703,7 +792,7 @@
         }
       }
     },
-    "/api/User": {
+    "/api/User/{id}/UserInformation": {
       "get": {
         "tags": [
           "User"
@@ -711,7 +800,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -724,6 +814,29 @@
           }
         }
       },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/UserInformation": {
       "post": {
         "tags": [
           "User"
@@ -783,30 +896,7 @@
         }
       }
     },
-    "/api/User/{id}": {
-      "delete": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/User/SumLike": {
+    "/api/User/UsersTotalLikes": {
       "get": {
         "tags": [
           "User"
@@ -828,7 +918,7 @@
         }
       }
     },
-    "/api/User/SumComment": {
+    "/api/User/UsersTotalComment": {
       "get": {
         "tags": [
           "User"
@@ -850,7 +940,7 @@
         }
       }
     },
-    "/api/User/{id}/jobs": {
+    "/api/User/{id}/UserOwnedJobs": {
       "get": {
         "tags": [
           "User"
@@ -873,7 +963,7 @@
         }
       }
     },
-    "/api/User/{id}/jobsby": {
+    "/api/User/{id}/UserTakenJobs": {
       "get": {
         "tags": [
           "User"
@@ -896,7 +986,7 @@
         }
       }
     },
-    "/api/User/{id}/commentsAll": {
+    "/api/User/{id}/UserCommentsAll": {
       "get": {
         "tags": [
           "User"

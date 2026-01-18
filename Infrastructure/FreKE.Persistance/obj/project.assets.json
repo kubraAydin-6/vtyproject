@@ -1353,23 +1353,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tolga\\.nuget\\packages\\": {},
+    "C:\\Users\\kübra\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tolga\\OneDrive\\Masaüstü\\Yeni klasör\\vtyproject\\Infrastructure\\FreKE.Persistance\\FreKE.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Persistance\\FreKE.Persistence.csproj",
       "projectName": "FreKE.Persistence",
-      "projectPath": "C:\\Users\\tolga\\OneDrive\\Masaüstü\\Yeni klasör\\vtyproject\\Infrastructure\\FreKE.Persistance\\FreKE.Persistence.csproj",
-      "packagesPath": "C:\\Users\\tolga\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tolga\\OneDrive\\Masaüstü\\Yeni klasör\\vtyproject\\Infrastructure\\FreKE.Persistance\\obj\\",
+      "projectPath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Persistance\\FreKE.Persistence.csproj",
+      "packagesPath": "C:\\Users\\kübra\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Persistance\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\tolga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kübra\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1378,14 +1378,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\tolga\\OneDrive\\Masaüstü\\Yeni klasör\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj": {
-              "projectPath": "C:\\Users\\tolga\\OneDrive\\Masaüstü\\Yeni klasör\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj"
+            "C:\\Users\\kübra\\Desktop\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj": {
+              "projectPath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj"
             }
           }
         }
@@ -1451,7 +1452,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

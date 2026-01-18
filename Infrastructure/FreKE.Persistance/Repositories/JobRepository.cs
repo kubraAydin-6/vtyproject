@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using FreKE.Application.Features.JobCategories.DTOs;
+using FreKE.Application.Features.Jobs.DTOs;
 using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
 using FreKE.Domain.Entities.enums;
@@ -166,6 +168,69 @@ namespace FreKE.Persistence.Repositories
             await _dbHelper.ExecuteNonQueryAsync(command);
             await connection.CloseAsync();
             return true;
+        }
+
+        public async Task<List<GetJobsPriceOfferTotalDTO>> GetJobsPriceOfferTotalsAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT
+                        j.Id as JobId,
+                        j.Title as JobTitle,
+                        COUNT(po.Id) AS PriceOfferTotal
+                        FROM PriceOffers po
+                        left join jobs j
+                        on po.jobid = j.id
+                        GROUP BY j.Id, j.Title";
+            var result = await connection.QueryAsync<GetJobsPriceOfferTotalDTO>(query);
+            return result.ToList();
+        }
+
+        public async Task<List<GetJobDateTotalDto>> GetJobDateTotalsAsync()
+        {
+            await using var conneciton = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT
+                          CAST(j.CreatedDate AS DATE) AS Date,
+                          jc.Name AS CategoryName,
+                          COUNT(j.Id) AS JobTotal
+                          FROM Jobs j
+                          LEFT JOIN JobCategories jc
+                          ON j.JobCategoryId = jc.Id
+                          GROUP BY
+                          CAST(j.CreatedDate AS DATE),jc.Name"; 
+            var result = await conneciton.QueryAsync<GetJobDateTotalDto>(query);
+            return result.ToList();
+        }
+
+        public async Task<List<Job>> GetJobWeekAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '7 days';";
+            var result = await connection.QueryAsync<Job>(query);
+            return result.ToList();
+        }
+        public async Task<List<Job>> GetJobMonthAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '30 days';";
+            var result = await connection.QueryAsync<Job>(query);
+            return result.ToList();
+        }
+
+        public async Task<List<Job>> GetJobDayAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '1 days';";
+            var result = await connection.QueryAsync<Job>(query);
+            return result.ToList();
+        }
+
+        public async Task<List<Job>> GetJobCategoryWeekAsync(Guid id)
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '7 days' AND jobcategoryid=@id";
+            var parameters = new { id };
+            var result = await connection.QueryAsync<Job>(query, parameters);
+            return result.ToList();
         }
     }
 }

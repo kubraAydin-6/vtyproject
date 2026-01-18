@@ -1,6 +1,9 @@
-﻿using FreKE.Application.Repositories;
+﻿using Dapper;
+using FreKE.Application.Features.Logs;
+using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
 using FreKE.Persistence.Helpers;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +50,18 @@ namespace FreKE.Persistence.Repositories
             await connection.CloseAsync();
 
             return 0;
+        }
+
+        public async Task<List<GetLogTotalDto>> GetLogTotalAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"Select
+                          l.loglevel as LogLevel,
+                          COUNT(l.id) as LogTotal
+                          from logs as l
+                          GROUP BY l.loglevel";
+            var result = await connection.QueryAsync<GetLogTotalDto>(query);
+            return result.ToList();
         }
     }
 }

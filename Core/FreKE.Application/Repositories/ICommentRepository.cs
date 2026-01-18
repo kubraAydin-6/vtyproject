@@ -10,7 +10,6 @@ namespace FreKE.Application.Repositories
     public interface ICommentRepository
     {
         Task<Comment> GetByIdAsync(Guid id);
-        Task<List<Comment>> GetAsync(Guid id);
         Task<int> AddAsync(Comment comment);
         Task<bool> UpdateAsync(Comment comment);
         Task<bool> DeleteAsync(Guid id);

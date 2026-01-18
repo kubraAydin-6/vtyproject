@@ -17,20 +17,20 @@ namespace FreKE.API.Controllers
             _jobRepository = jobRepository;
         }
 
-        [HttpGet]
+        [HttpGet("JobInformation")]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             var job = await _jobRepository.GetByIdAsync(id);
 
             return Ok(job);
         }
-        [HttpGet("List/CategoryId")]
+        [HttpGet("{CategoryId}/JobList")]
         public async Task<IActionResult> GetAsync(Guid? id)
         {
             var jobs = await _jobRepository.GetAsync(id);
             return Ok(jobs);
         }
-        [HttpPost]
+        [HttpPost("JobInformation")]
         public async Task<IActionResult> CreateAsync(CreateJobRequest request)
         {
             Job job = new()
@@ -46,7 +46,7 @@ namespace FreKE.API.Controllers
             await _jobRepository.AddAsync(job);
             return Ok();
         }
-        [HttpPut]
+        [HttpPut("JobInformation")]
         public async Task<IActionResult> UpdateAsync(UpdateJobRequest request)
         {
             Job job = await _jobRepository.GetByIdAsync(request.Id);
@@ -74,16 +74,50 @@ namespace FreKE.API.Controllers
             await _jobRepository.DeleteAsync(id);
             return Ok();
         }
-        [HttpPut("{id}")]
+        [HttpPut("JobStatusInformation")]
         public async Task<IActionResult> CompletedAsync(Guid id, Guid employerid)
         {
             Job job = await _jobRepository.GetByIdAsync(id);
             if (job.EmployerId == employerid)
                 await _jobRepository.CompletedAsync(id);
-                return Ok();
+            return Ok();
             return BadRequest();
-            
-
+        }
+        [HttpGet("TotalPriceOfferJob")]
+        public async Task<IActionResult> GetJobsPriceOfferTotalsAsync()
+        {
+            var totalPrice = await _jobRepository.GetJobsPriceOfferTotalsAsync();
+            return Ok(totalPrice);
+        }
+        [HttpGet("JobDateTotal")]
+        public async Task<IActionResult> GetJobDateTotalsAsync()
+        {
+            var jobDateTotals = await _jobRepository.GetJobDateTotalsAsync();
+            return Ok(jobDateTotals);
+        }
+        [HttpGet("JobOfTheWeek")]
+        public async Task<IActionResult> GetJobWeekAsync()
+        {
+            var jobWeek = await _jobRepository.GetJobWeekAsync();
+            return Ok(jobWeek);
+        }
+        [HttpGet("JobOfTheMonth")]
+        public async Task<IActionResult> GetJobMonthAsync()
+        {
+            var jobMonth = await _jobRepository.GetJobMonthAsync();
+            return Ok(jobMonth);
+        }
+        [HttpGet("JobOfTheDay")]
+        public async Task<IActionResult> GetJobDayAsync()
+        {
+            var jobDay = await _jobRepository.GetJobDayAsync();
+            return Ok(jobDay);
+        }
+        [HttpGet("JobCategoryOfTheWeek")]
+        public async Task<IActionResult> GetJobCategoryWeekAsync(Guid id)
+        {
+            var jobCategoryWeek = await _jobRepository.GetJobCategoryWeekAsync(id);
+            return Ok(jobCategoryWeek);
         }
     }
 }

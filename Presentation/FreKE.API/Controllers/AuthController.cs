@@ -34,9 +34,9 @@ namespace FreKE.API.Controllers
 
             var encryptedPass = _userProvider.EncryptPassword(request.Password, request.Email);
 
-            if (!string.Equals(user.Password, encryptedPass))
+            if (!string.Equals(user.Password, encryptedPass)) 
             {
-                return BadRequest("Kullanıcı Adı yada Şifre Hatalı !");
+                return BadRequest("Kullanıcı Adı veya Şifre Hatalı !");
             }
 
             var token = await _tokenGenerator.GenerateJwtAccessToken(user);

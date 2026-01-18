@@ -25,15 +25,6 @@ namespace FreKE.Persistence.Repositories
             var parameters = new { id };
             return await _dbHelper.QueryFirstOrDefaultAsync<Comment>(query, parameters);
         }
-        public async Task<List<Comment>> GetAsync(Guid id)
-        {
-            await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = "Select * from comments where commentedbyid=@commentedbyid";
-            var parameters = new { commentedbyid = id };
-            
-            var result = await connection.QueryAsync<Comment>(query,parameters);
-            return result.ToList();
-        }
         public async Task<int> AddAsync(Comment comment)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();

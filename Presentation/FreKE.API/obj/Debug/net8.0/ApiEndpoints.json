@@ -80,64 +80,21 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FreKE.API.Controllers.CommentController",
+    "ContainingType": "FreKE.API.Controllers.JobController",
     "Method": "GetAsync",
-    "RelativePath": "api/Comment/ListCommentById",
+    "RelativePath": "api/Job/{CategoryId}/JobList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Guid",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FreKE.API.Controllers.JobController",
-    "Method": "GetByIdAsync",
-    "RelativePath": "api/Job",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+      },
       {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FreKE.API.Controllers.JobController",
-    "Method": "CreateAsync",
-    "RelativePath": "api/Job",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "FreKE.Application.Features.Jobs.DTOs.CreateJobRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FreKE.API.Controllers.JobController",
-    "Method": "UpdateAsync",
-    "RelativePath": "api/Job",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "FreKE.Application.Features.Jobs.DTOs.UpdateJobRequest",
+        "Name": "CategoryId",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -161,8 +118,112 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "GetJobCategoryWeekAsync",
+    "RelativePath": "api/Job/JobCategoryOfTheWeek",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "GetJobDateTotalsAsync",
+    "RelativePath": "api/Job/JobDateTotal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/Job/JobInformation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "CreateAsync",
+    "RelativePath": "api/Job/JobInformation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FreKE.Application.Features.Jobs.DTOs.CreateJobRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/Job/JobInformation",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FreKE.Application.Features.Jobs.DTOs.UpdateJobRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "GetJobDayAsync",
+    "RelativePath": "api/Job/JobOfTheDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "GetJobMonthAsync",
+    "RelativePath": "api/Job/JobOfTheMonth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
+    "Method": "GetJobWeekAsync",
+    "RelativePath": "api/Job/JobOfTheWeek",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.JobController",
     "Method": "CompletedAsync",
-    "RelativePath": "api/Job/{id}",
+    "RelativePath": "api/Job/JobStatusInformation",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -170,7 +231,7 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "employerid",
@@ -182,18 +243,12 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.JobController",
-    "Method": "GetAsync",
-    "RelativePath": "api/Job/List/CategoryId",
+    "Method": "GetJobsPriceOfferTotalsAsync",
+    "RelativePath": "api/Job/TotalPriceOfferJob",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -271,6 +326,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FreKE.API.Controllers.JobCategoryController",
+    "Method": "JobCategoryTotalAsync",
+    "RelativePath": "api/JobCategory/TotalJobs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FreKE.API.Controllers.LikeController",
     "Method": "GetByIdAsync",
     "RelativePath": "api/Like",
@@ -319,9 +384,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FreKE.API.Controllers.LikeController",
-    "Method": "GetAsync",
-    "RelativePath": "api/Like/List",
+    "ContainingType": "FreKE.API.Controllers.LogController",
+    "Method": "GetLogTotals",
+    "RelativePath": "api/Log",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -394,6 +459,27 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.PriceOfferController",
+    "Method": "GetAsync",
+    "RelativePath": "api/PriceOffer/{jobId}/PriceOfferList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "jobId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.PriceOfferController",
     "Method": "ApproveAsync",
     "RelativePath": "api/PriceOffer/Approve",
     "HttpMethod": "PUT",
@@ -404,22 +490,6 @@
         "Name": "request",
         "Type": "FreKE.Application.Features.PriceOffers.DTOs.ApprovePriceOfferRequest",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FreKE.API.Controllers.PriceOfferController",
-    "Method": "GetAsync",
-    "RelativePath": "api/PriceOffer/List",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -442,8 +512,8 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
-    "Method": "GetByIdAsync",
-    "RelativePath": "api/User",
+    "Method": "GetByIdCommentsAll",
+    "RelativePath": "api/User/{id}/UserCommentsAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -451,22 +521,6 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FreKE.API.Controllers.UserController",
-    "Method": "CreateAsync",
-    "RelativePath": "api/User",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "FreKE.Application.Features.Users.DTOs.CreateUserRequest",
         "IsRequired": true
       }
     ],
@@ -474,15 +528,15 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
-    "Method": "UpdateAsync",
-    "RelativePath": "api/User",
-    "HttpMethod": "PUT",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/User/{id}/UserInformation",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "FreKE.Application.Features.Users.DTOs.UpdateUserRequest",
+        "Name": "id",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
@@ -491,7 +545,7 @@
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
     "Method": "DeleteAsync",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/User/{id}/UserInformation",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -506,24 +560,8 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
-    "Method": "GetByIdCommentsAll",
-    "RelativePath": "api/User/{id}/commentsAll",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FreKE.API.Controllers.UserController",
     "Method": "GetJobUserAsync",
-    "RelativePath": "api/User/{id}/jobs",
+    "RelativePath": "api/User/{id}/UserOwnedJobs",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -539,7 +577,7 @@
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
     "Method": "GetJobUserByAsync",
-    "RelativePath": "api/User/{id}/jobsby",
+    "RelativePath": "api/User/{id}/UserTakenJobs",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -554,8 +592,40 @@
   },
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
+    "Method": "CreateAsync",
+    "RelativePath": "api/User/UserInformation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FreKE.Application.Features.Users.DTOs.CreateUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.UserController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/User/UserInformation",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FreKE.Application.Features.Users.DTOs.UpdateUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FreKE.API.Controllers.UserController",
     "Method": "GetSumCommentAsync",
-    "RelativePath": "api/User/SumComment",
+    "RelativePath": "api/User/UsersTotalComment",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -571,7 +641,7 @@
   {
     "ContainingType": "FreKE.API.Controllers.UserController",
     "Method": "GetSumLikeAsync",
-    "RelativePath": "api/User/SumLike",
+    "RelativePath": "api/User/UsersTotalLikes",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

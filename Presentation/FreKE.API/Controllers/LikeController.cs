@@ -23,12 +23,6 @@ namespace FreKE.API.Controllers
 
             return Ok(likes);
         }
-        [HttpGet("List")]
-        public async Task<IActionResult> GetAsync()
-        {
-            var likes = await _likeRepository.GetAsync();
-            return Ok(likes);
-        }
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateLikeRequest request)
         {
