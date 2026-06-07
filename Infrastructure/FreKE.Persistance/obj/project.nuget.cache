@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IB5Ah6cHDrI=",
+  "dgSpecHash": "usrQxJBVQ1k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Persistance\\FreKE.Persistence.csproj",
+  "projectFilePath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Infrastructure\\FreKE.Persistance\\FreKE.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kübra\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
     "C:\\Users\\kübra\\.nuget\\packages\\dapper.sqlbuilder\\2.1.66\\dapper.sqlbuilder.2.1.66.nupkg.sha512",

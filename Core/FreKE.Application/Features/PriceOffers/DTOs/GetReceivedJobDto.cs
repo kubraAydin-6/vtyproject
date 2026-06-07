@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FreKE.Application.Features.Jobs.DTOs
+namespace FreKE.Application.Features.PriceOffers.DTOs
 {
-    public class CreateJobRequest
+    public class GetReceivedJobDto
     {
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public decimal Budget { get; set; }
-        public DateTime? CompletedDate { get; set; }
         public JobStatus Status { get; set; }
-        public Guid JobCategoryId { get; set; }
+        public Guid WorkerId { get; set; }
     }
 }

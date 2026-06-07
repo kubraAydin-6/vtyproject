@@ -14,7 +14,7 @@ namespace FreKE.Application.Repositories
         Task<List<UserCommentDTO>> GetByIdCommentsAll(Guid id);
         Task<long> GetSumLikeAsync(Guid id);
         Task<long> GetSumCommentAsync(Guid id);
-        Task<List<Job>> GetJobUserAsync(Guid id);
+        Task<List<GetUserJobTakenDto>> GetJobUserAsync(Guid id);
         Task<List<Job>> GetJobUserByAsync(Guid id);
         Task<int> AddAsync(User user);
         Task<bool> UpdateAsync(User user);

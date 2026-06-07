@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Pbs79Yj0l+A=",
+  "dgSpecHash": "15XF/edps/8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Presentation\\FreKE.API\\FreKE.API.csproj",
+  "projectFilePath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Presentation\\FreKE.API\\FreKE.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kübra\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
     "C:\\Users\\kübra\\.nuget\\packages\\dapper.sqlbuilder\\2.1.66\\dapper.sqlbuilder.2.1.66.nupkg.sha512",

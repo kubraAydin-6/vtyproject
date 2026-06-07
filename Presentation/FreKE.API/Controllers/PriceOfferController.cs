@@ -3,6 +3,7 @@ using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
 using FreKE.Persistence.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FreKE.API.Controllers
 {
@@ -11,9 +12,11 @@ namespace FreKE.API.Controllers
     public class PriceOfferController : ControllerBase
     {
         private readonly IPriceOfferRepository _priceOfferRepository;
-        public PriceOfferController(IPriceOfferRepository priceOfferRepository)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public PriceOfferController(IPriceOfferRepository priceOfferRepository, IHttpContextAccessor httpContextAccessor)
         {
             _priceOfferRepository = priceOfferRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
@@ -23,19 +26,22 @@ namespace FreKE.API.Controllers
 
             return Ok(priceOffer);
         }
-        [HttpGet("{jobId}/PriceOfferList")]
+        [HttpGet("PriceOfferList/{id}")]
         public async Task<IActionResult> GetAsync(Guid? id)
         {
             var priceOffers = await _priceOfferRepository.GetAsync(id.Value);
             return Ok(priceOffers);
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync(CreatePriceOfferRequest request)
+        [HttpPost("CreatePriceOfferProfile")]
+        public async Task<IActionResult> AddAsync(CreatePriceOfferRequest request)
         {
+            var userId = _httpContextAccessor.HttpContext!
+            .User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
             PriceOffer priceOffer = new()
             {
                 OfferedPrice = request.OfferedPrice,
-                WorkerId = request.WorkerId,
+                WorkerId = Guid.Parse(userId.Value),
                 JobId = request.JobId
 
             };
@@ -68,7 +74,7 @@ namespace FreKE.API.Controllers
         [HttpPut("Approve")]
         public async Task<IActionResult> ApproveAsync(ApprovePriceOfferRequest request)
         {
-            await _priceOfferRepository.ApproveAsync(request.Id, request.JobId);
+            await _priceOfferRepository.ApproveAsync(request.OfferId, request.JobId);
             return Ok();
         }
         [HttpPut("RejectOthers")]

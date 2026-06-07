@@ -6,6 +6,7 @@ using FreKE.Domain.Entities;
 using FreKE.Domain.Entities.enums;
 using FreKE.Persistence.Helpers;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,41 +30,53 @@ namespace FreKE.Persistence.Repositories
             var parameters = new { id };
             return await _dbHelper.QueryFirstOrDefaultAsync<Job>(query, parameters);
         }
+
         public async Task<int> AddAsync(Job job)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             await using var transaction = await connection.BeginTransactionAsync();
-            var query = @"insert into jobs (title, description, budget, completeddate, status, employerid, jobcategoryid, createddate, updateddate, approvedofferid)
+            try
+            {
+                var query = @"insert into jobs (title, description, budget, completeddate, status, employerid, jobcategoryid, createddate, updateddate, approvedofferid)
             values (@title,@description, @budget, @completeddate, @status , @employerid, @jobcategoryid, @createddate, @updateddate, @approvedofferid)";
 
-            var parameters = new
-            {
-                job.Title,
-                job.Description,
-                job.Budget,
-                job.CompletedDate,
-                job.Status,
-                job.EmployerId,
-                job.JobCategoryId,
-                job.CreatedDate,
-                job.UpdatedDate,
-                job.ApprovedOfferId
-            };
+                var parameters = new
+                {
+                    job.Title,
+                    job.Description,
+                    job.Budget,
+                    job.CompletedDate,
+                    job.Status,
+                    job.EmployerId,
+                    job.JobCategoryId,
+                    job.CreatedDate,
+                    job.UpdatedDate,
+                    job.ApprovedOfferId
+                };
 
-            await using var command = _dbHelper.CreateCommand(query, connection);
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("title", parameters.Title));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("description", parameters.Description));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<decimal>("budget", parameters.Budget));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime?>("completeddate", parameters.CompletedDate));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<short>("status", (short)parameters.Status));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("employerid", parameters.EmployerId));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("jobcategoryid", parameters.JobCategoryId));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("createdDate", parameters.CreatedDate));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("updatedDate", parameters.UpdatedDate));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("approvedofferid", parameters.ApprovedOfferId));
-            await _dbHelper.ExecuteNonQueryAsync(command);
-            await transaction.CommitAsync();
-            await connection.CloseAsync();
+                await using var command = _dbHelper.CreateCommand(query, connection);
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("title", parameters.Title));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("description", parameters.Description));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<decimal>("budget", parameters.Budget));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime?>("completeddate", parameters.CompletedDate));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<short>("status", (short)parameters.Status));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("employerid", parameters.EmployerId));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("jobcategoryid", parameters.JobCategoryId));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("createdDate", parameters.CreatedDate));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("updatedDate", parameters.UpdatedDate));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("approvedofferid", parameters.ApprovedOfferId));
+                await _dbHelper.ExecuteNonQueryAsync(command);
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                transaction.Rollback();
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            
 
             return 0;
         }
@@ -72,40 +85,32 @@ namespace FreKE.Persistence.Repositories
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             await using var transaction = await connection.BeginTransactionAsync();
-            var query = @"Update jobs                                   
-            set title=@title, description=@description, budget=@budget, completeddate=@completeddate , status=@status, employerid=@employerid, jobcategoryid=@jobcategoryid, updateddate=@updateddate, approvedofferid=@approvedofferid  where id=@id";
+            var query = @"CALL update_job(
+            @id,
+            @title,
+            @description,
+            @budget,
+            @completeddate,
+            @status,
+            @employerid,
+            @jobcategoryid,
+            @updateddate,
+            @approvedofferid
+            );";
 
-            if (job.Id == null)
+            await connection.ExecuteAsync(query, new
             {
-                return false;
-            }
-            var parameters = new
-            {
-                job.Id,
-                job.Title,
-                job.Description,
-                job.Budget,
-                job.CompletedDate,
-                job.Status,
-                job.EmployerId,
-                job.JobCategoryId,
-                job.UpdatedDate,
-                job.ApprovedOfferId
-            };
-
-            await using var command = _dbHelper.CreateCommand(query, connection);
-
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("id", parameters.Id));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("title", parameters.Title));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<string>("description", parameters.Description));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<decimal>("budget", parameters.Budget));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime?>("completeddate", parameters.CompletedDate));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<short>("status", (short)parameters.Status));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("employerid", parameters.EmployerId));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("jobcategoryid", parameters.JobCategoryId));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<DateTime>("updatedDate", parameters.UpdatedDate));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("approvedofferid", parameters.ApprovedOfferId));
-            await _dbHelper.ExecuteNonQueryAsync(command);
+                id = job.Id,
+                title = job.Title,
+                description = job.Description,
+                budget = job.Budget,
+                completeddate = job.CompletedDate,
+                status = (short)job.Status,
+                employerid = job.EmployerId,
+                jobcategoryid = job.JobCategoryId,
+                updateddate = job.UpdatedDate,
+                approvedofferid = job.ApprovedOfferId
+            });
             await transaction.CommitAsync();
             await connection.CloseAsync();
 
@@ -115,26 +120,22 @@ namespace FreKE.Persistence.Repositories
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             await using var transaction = await connection.BeginTransactionAsync();
-            var query = @"Delete from jobs where id=@id";
 
-            var parameters = new
+            try
             {
-                id,
-            };
-            if (id == null)
-            {
-                return false;
+                var deleteJob = @"DELETE FROM jobs WHERE id = @id";
+                await connection.ExecuteAsync(deleteJob, new { id }, transaction);
+
+                await transaction.CommitAsync();
+                return true;
             }
-            await using var command = _dbHelper.CreateCommand(query, connection);
-
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("id", parameters.id));
-            await _dbHelper.ExecuteNonQueryAsync(command);
-            await transaction.CommitAsync();
-            await connection.CloseAsync();
-
-            return true;
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
-            public async Task<List<Job>> GetAsync(Guid? id)
+        public async Task<List<Job>> GetAsync(Guid? id)
             {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
 
@@ -153,21 +154,29 @@ namespace FreKE.Persistence.Repositories
             return result.ToList();
             }
 
-        public async Task<bool> CompletedAsync(Guid jobid)
+        public async Task<bool> CompletedAsync(Guid jobId, Guid userId)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = @"Update jobs 
-                        set status=@status where id = @id";
-            var parameters = new {
-                Status = JobStatus.Completed,
-                Id = jobid,
-            };
+
+            var query = @"
+        UPDATE jobs
+        SET status = @Status
+        WHERE id = @JobId
+        AND approvedofferid IN (
+            SELECT id
+            FROM priceoffers
+            WHERE workerid = @UserId
+        )";
+
             await using var command = _dbHelper.CreateCommand(query, connection);
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<short>("status", (short)parameters.Status));
-            command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("id", parameters.Id));
-            await _dbHelper.ExecuteNonQueryAsync(command);
-            await connection.CloseAsync();
-            return true;
+
+            command.Parameters.Add(new NpgsqlParameter<short>("status", (short)JobStatus.Completed));
+            command.Parameters.Add(new NpgsqlParameter<Guid>("jobId", jobId));
+            command.Parameters.Add(new NpgsqlParameter<Guid>("userId", userId));
+
+            var affectedRows = await _dbHelper.ExecuteNonQueryAsync(command);
+
+            return affectedRows > 0;
         }
 
         public async Task<List<GetJobsPriceOfferTotalDTO>> GetJobsPriceOfferTotalsAsync()
@@ -204,14 +213,17 @@ namespace FreKE.Persistence.Repositories
         public async Task<List<Job>> GetJobWeekAsync()
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '7 days';";
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= 
+                CURRENT_DATE - INTERVAL '7 days'"; //;
+
             var result = await connection.QueryAsync<Job>(query);
             return result.ToList();
         }
         public async Task<List<Job>> GetJobMonthAsync()
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '30 days';";
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= 
+                CURRENT_DATE - INTERVAL '30 days'"; //;
             var result = await connection.QueryAsync<Job>(query);
             return result.ToList();
         }
@@ -219,7 +231,8 @@ namespace FreKE.Persistence.Repositories
         public async Task<List<Job>> GetJobDayAsync()
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '1 days';";
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= 
+                CURRENT_DATE - INTERVAL '1 days'"; //;
             var result = await connection.QueryAsync<Job>(query);
             return result.ToList();
         }
@@ -227,9 +240,103 @@ namespace FreKE.Persistence.Repositories
         public async Task<List<Job>> GetJobCategoryWeekAsync(Guid id)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= CURRENT_DATE - INTERVAL '7 days' AND jobcategoryid=@id";
+            var query = @"SELECT * FROM Jobs WHERE CreatedDate >= 
+                CURRENT_DATE - INTERVAL '7 days' AND jobcategoryid=@id"; //
             var parameters = new { id };
             var result = await connection.QueryAsync<Job>(query, parameters);
+            return result.ToList();
+        }
+
+        public async Task<List<JobListDto>> GetAllAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"
+                SELECT 
+                  j.Id,
+                  j.Title,
+                  j.Description,
+                  j.Budget,
+                  j.Status,
+                  j.jobCategoryId,
+                  jc.Name AS JobCategoryName,
+                  u.Name AS EmployerName,
+                  u.Surname AS EmployerSurname,
+                  j.CreatedDate,
+                  j.CompletedDate
+                  FROM Jobs j
+                  INNER JOIN JobCategories jc
+                  ON jc.Id = j.JobCategoryId
+                  INNER JOIN Users u
+                  ON u.Id = j.EmployerId";
+
+            var result = await connection.QueryAsync<JobListDto>(query);
+            return result.ToList();
+        }
+
+        public async Task<JobProfileListDto> GetByIdProfileAsync(Guid id)
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT 
+                  j.Id,
+                  j.Title,
+                  j.Description,
+                  j.Budget,
+                  j.Status,
+                  j.jobCategoryId,
+                  jc.Name AS JobCategoryName,
+                  u.Name AS EmployerName,
+                  u.Surname AS EmployerSurname,
+                  j.CreatedDate,
+                  j.CompletedDate
+                  FROM Jobs j
+                  INNER JOIN JobCategories jc
+                  ON jc.Id = j.JobCategoryId
+                  INNER JOIN Users u
+                  ON u.Id = j.EmployerId where j.Id=@id";
+            var parameters = new { id };
+            return await connection.QueryFirstOrDefaultAsync<JobProfileListDto>(query,parameters);
+            
+        }
+
+        public async Task<List<GetJobBudgetDto>> GetJobsByBudgetAscAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+
+            var query = @"
+            SELECT
+            j.Id,
+            j.Title,
+            j.Budget,
+            jc.Name AS CategoryName,
+            j.CreatedDate
+            FROM Jobs j
+            INNER JOIN JobCategories jc
+            ON jc.Id = j.JobCategoryId
+            ORDER BY j.Budget ASC";
+
+            var result = await connection.QueryAsync<GetJobBudgetDto>(query);
+
+            return result.ToList();
+        }
+
+        public async Task<List<GetJobBudgetDto>> GetJobsByBudgetDescAsync()
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+
+            var query = @"
+            SELECT
+            j.Id,
+            j.Title,
+            j.Budget,
+            jc.Name AS CategoryName,
+            j.CreatedDate
+            FROM Jobs j
+            INNER JOIN JobCategories jc
+            ON jc.Id = j.JobCategoryId
+            ORDER BY j.Budget DESC";
+
+            var result = await connection.QueryAsync<GetJobBudgetDto>(query);
+
             return result.ToList();
         }
     }

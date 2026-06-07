@@ -82,7 +82,7 @@ namespace FreKE.API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id}/UserOwnedJobs")]
+        [HttpGet("UserOwnedJobs/{id}")]
         public async Task<IActionResult> GetJobUserAsync(Guid id)
         {
             var users = await _userRepository.GetJobUserAsync(id);

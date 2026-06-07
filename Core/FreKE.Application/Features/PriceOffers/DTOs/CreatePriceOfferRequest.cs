@@ -9,7 +9,6 @@ namespace FreKE.Application.Features.PriceOffers.DTOs
     public class CreatePriceOfferRequest
     {
         public decimal OfferedPrice { get; set; }
-        public Guid WorkerId { get; set; }
         public Guid JobId { get; set; }
     }
 }

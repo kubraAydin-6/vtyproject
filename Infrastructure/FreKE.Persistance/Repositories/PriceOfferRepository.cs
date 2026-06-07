@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using FreKE.Application.Features.PriceOffers.DTOs;
 using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
 using FreKE.Domain.Entities.enums;
@@ -26,16 +27,27 @@ namespace FreKE.Persistence.Repositories
             var parameters = new { id };
             return await _dbHelper.QueryFirstOrDefaultAsync<PriceOffer>(query, parameters);
         }
-        public async Task<List<PriceOffer>> GetAsync(Guid id)
+        public async Task<List<GetPriceOfferDto>> GetAsync(Guid id)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
-            var query = "Select * from priceoffers where jobid = @id";
-            var parameters = new 
-            { 
-                id 
+            var query = @"SELECT
+                    po.id AS Id,
+                     po.offeredprice AS OfferedPrice,
+                     po.status AS PriceOfferStatus,
+                    po.workerid AS WorkerId,
+                    u.name AS WorkerName,
+                    u.surname AS WorkerSurname,
+                     po.jobid AS JobId
+                    FROM priceoffers po
+                    INNER JOIN users u
+                    ON u.id = po.workerid
+                    WHERE po.jobid=@id";
+            var parameters = new
+            {
+                id
             };
 
-            var result = await connection.QueryAsync<PriceOffer>(query, parameters);
+            var result = await connection.QueryAsync<GetPriceOfferDto>(query, parameters);
 
             return result.ToList();
 
@@ -137,9 +149,20 @@ namespace FreKE.Persistence.Repositories
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             await using var transaction = await connection.BeginTransactionAsync();
             try
-            {   
-                var query = @"Update jobs set status=@status, approvedofferid=@approvedofferid where id=@id;
-                            Update priceoffers set status=@offerstatus where id=@approvedofferid";
+            {
+                var query = @"Update jobs 
+                            set status=@status, 
+                            approvedofferid=@approvedofferid 
+                            where id=@id;
+
+                            Update priceoffers 
+                            set status=@offerstatus 
+                            where id=@approvedofferid;
+
+                            UPDATE priceoffers
+                            set status=@rejectedStatus
+                            where jobid=@jobId
+                            and id!=@approvedofferid";
 
                 var parameters = new
                 {
@@ -154,6 +177,8 @@ namespace FreKE.Persistence.Repositories
                 command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("approvedofferid", parameters.ApprovedOfferId));
                 command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("id", parameters.Id));
                 command.Parameters.Add(new Npgsql.NpgsqlParameter<short>("offerstatus", parameters.PriceOfferStatus));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<short>("rejectedStatus",(short)PriceOfferStatus.Rejected));
+                command.Parameters.Add(new Npgsql.NpgsqlParameter<Guid>("jobId",jobId));
                 await _dbHelper.ExecuteNonQueryAsync(command);
                 await transaction.CommitAsync();
             }
@@ -169,7 +194,7 @@ namespace FreKE.Persistence.Repositories
             }
 
         }
-        public async Task RejectOthersAsync(Guid offerId,Guid jobId)
+        public async Task RejectOthersAsync(Guid offerId, Guid jobId)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
             await using var transaction = await connection.BeginTransactionAsync();
@@ -201,6 +226,51 @@ namespace FreKE.Persistence.Repositories
                 if (connection.State != ConnectionState.Closed)
                     await connection.CloseAsync();
             }
+        }
+
+        public async Task<List<GetGivenPriceOfferDto>> GetByIdProfileAsync(Guid id)
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+            var query = @"SELECT
+                    po.id AS Id,
+                     po.offeredprice AS OfferedPrice,
+                     po.status AS Status,
+                    po.jobid AS JobId,
+                    j.title AS JobTitle
+                    FROM priceoffers po
+                    INNER JOIN jobs j
+                    ON j.id = po.jobid
+                    WHERE po.workerid=@id";
+            var parameters = new { id };
+            var result = await connection.QueryAsync<GetGivenPriceOfferDto>(query, parameters);
+
+            return result.ToList();
+        }
+
+        public async Task<List<GetReceivedJobDto>> GetReceivedJobsAsync(Guid workerId)
+        {
+            await using var connection = await _dbHelper.GetNpgSqlConnection();
+
+            var query = @"
+            SELECT
+            j.id AS Id,
+            j.title AS Title,
+            j.description AS Description,
+            j.status AS Status,
+            po.workerid AS WorkerId
+            FROM jobs j
+            INNER JOIN priceoffers po ON po.id = j.approvedofferid
+            WHERE po.workerid = @workerId
+    ";
+
+            var parameters = new
+            {
+                workerId,
+            };
+
+            var result = await connection.QueryAsync<GetReceivedJobDto>(query, parameters);
+
+            return result.ToList();
         }
     }
 }

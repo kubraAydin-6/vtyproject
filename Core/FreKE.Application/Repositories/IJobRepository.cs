@@ -12,6 +12,10 @@ namespace FreKE.Application.Repositories
     public interface IJobRepository
     {
         Task<Job> GetByIdAsync(Guid id);
+        Task<JobProfileListDto> GetByIdProfileAsync(Guid id);     
+        Task<List<JobListDto>> GetAllAsync();
+        //Task<List<JobListDto>> GetAllByIdAsync();
+
         Task<List<Job>> GetAsync(Guid? id);
         Task<List<GetJobsPriceOfferTotalDTO>> GetJobsPriceOfferTotalsAsync();
         Task<List<GetJobDateTotalDto>> GetJobDateTotalsAsync();
@@ -22,6 +26,9 @@ namespace FreKE.Application.Repositories
         Task<int> AddAsync(Job job);
         Task<bool> UpdateAsync(Job job);
         Task<bool> DeleteAsync(Guid id);
-        Task<bool> CompletedAsync(Guid jobid);
+        Task<bool> CompletedAsync(Guid jobid, Guid userid);
+        Task<List<GetJobBudgetDto>> GetJobsByBudgetAscAsync();
+
+        Task<List<GetJobBudgetDto>> GetJobsByBudgetDescAsync();
     }
 }

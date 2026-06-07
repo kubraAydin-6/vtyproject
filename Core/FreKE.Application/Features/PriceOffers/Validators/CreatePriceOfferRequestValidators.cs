@@ -19,10 +19,6 @@ namespace FreKE.Application.Features.PriceOffers.Validators
                 .GreaterThan(0)
                 .WithMessage("Teklif Edilen Fiyat 0'dan büyük olmalıdır");
 
-            RuleFor(P => P.WorkerId)
-                .NotEmpty()
-                .WithMessage("Çalışan Id Boş olamaz");
-
             RuleFor(P => P.JobId)
                 .NotEmpty()
                 .WithMessage("İş Id Boş olamaz");

@@ -20,8 +20,6 @@ namespace FreKE.Application.Features.Jobs.Validators
                 .MaximumLength(1000).WithMessage("Açıklama 1000 karakterden az olmalı.");
             RuleFor(x => x.Budget)
                 .GreaterThan(0).WithMessage("Bütçe 0 dan büyük olmalı.");
-            RuleFor(x => x.EmployerId)
-                .NotEmpty().WithMessage("İş veren id boş olamaz.");
             RuleFor(x => x.JobCategoryId)
                 .NotEmpty().WithMessage("işkategori id boş olamaz.");
         }

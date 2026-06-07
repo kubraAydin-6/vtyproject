@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FreKE.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+182e09aa04e35666b0c380a8ce9dac32494de91c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05692b17400d903a5a09577c019f6281423133d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("FreKE.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FreKE.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

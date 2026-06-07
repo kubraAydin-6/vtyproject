@@ -3,6 +3,7 @@ using FreKE.Application.Repositories;
 using FreKE.Domain.Entities;
 using FreKE.Persistence.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FreKE.API.Controllers
 {
@@ -11,28 +12,42 @@ namespace FreKE.API.Controllers
     public class JobController : ControllerBase
     {
         private readonly IJobRepository _jobRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public JobController(IJobRepository jobRepository)
+        public JobController(IJobRepository jobRepository, IHttpContextAccessor httpContextAccessor)
         {
             _jobRepository = jobRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        [HttpGet("JobInformation")]
+        [HttpGet("JobInformation/{id}")]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             var job = await _jobRepository.GetByIdAsync(id);
 
             return Ok(job);
         }
+
+        [HttpGet("JobProfileInformation/{id}")]
+        public async Task<IActionResult> GetByIdProfileAsync(Guid id)
+        {
+            var job = await _jobRepository.GetByIdProfileAsync(id);
+
+            return Ok(job);
+        }
+
         [HttpGet("{CategoryId}/JobList")]
         public async Task<IActionResult> GetAsync(Guid? id)
         {
             var jobs = await _jobRepository.GetAsync(id);
             return Ok(jobs);
         }
-        [HttpPost("JobInformation")]
+        [HttpPost("CreateJobProfile")]
         public async Task<IActionResult> CreateAsync(CreateJobRequest request)
         {
+            var userId = _httpContextAccessor.HttpContext!
+            .User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
             Job job = new()
             {
                 Title = request.Title,
@@ -40,7 +55,7 @@ namespace FreKE.API.Controllers
                 Budget = request.Budget,
                 CompletedDate = request.CompletedDate,
                 Status = request.Status,
-                EmployerId = request.EmployerId,
+                EmployerId = Guid.Parse(userId.Value),
                 JobCategoryId = request.JobCategoryId
             };
             await _jobRepository.AddAsync(job);
@@ -65,7 +80,7 @@ namespace FreKE.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             Job job = await _jobRepository.GetByIdAsync(id);
@@ -74,14 +89,17 @@ namespace FreKE.API.Controllers
             await _jobRepository.DeleteAsync(id);
             return Ok();
         }
-        [HttpPut("JobStatusInformation")]
-        public async Task<IActionResult> CompletedAsync(Guid id, Guid employerid)
+        [HttpPut("complete/{jobId}")]
+        public async Task<IActionResult> Complete(Guid jobId)
         {
-            Job job = await _jobRepository.GetByIdAsync(id);
-            if (job.EmployerId == employerid)
-                await _jobRepository.CompletedAsync(id);
+            var userId = Guid.Parse(User.FindFirst("sub")?.Value);
+
+            var result = await _jobRepository.CompletedAsync(jobId, userId);
+
+            if (!result)
+                return Forbid("Bu işi tamamlamaya yetkin yok.");
+
             return Ok();
-            return BadRequest();
         }
         [HttpGet("TotalPriceOfferJob")]
         public async Task<IActionResult> GetJobsPriceOfferTotalsAsync()
@@ -118,6 +136,12 @@ namespace FreKE.API.Controllers
         {
             var jobCategoryWeek = await _jobRepository.GetJobCategoryWeekAsync(id);
             return Ok(jobCategoryWeek);
+        }
+        [HttpGet("AllJob")]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var jobs = await _jobRepository.GetAllAsync();
+            return Ok(jobs);
         }
     }
 }

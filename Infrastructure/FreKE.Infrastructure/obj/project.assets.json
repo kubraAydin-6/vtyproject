@@ -927,11 +927,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Infrastructure\\FreKE.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Infrastructure\\FreKE.Infrastructure\\FreKE.Infrastructure.csproj",
       "projectName": "FreKE.Infrastructure",
-      "projectPath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Infrastructure\\FreKE.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Infrastructure\\FreKE.Infrastructure\\FreKE.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\kübra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Infrastructure\\FreKE.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Infrastructure\\FreKE.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -953,8 +953,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\kübra\\Desktop\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj": {
-              "projectPath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj"
+            "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj": {
+              "projectPath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj"
             }
           }
         }

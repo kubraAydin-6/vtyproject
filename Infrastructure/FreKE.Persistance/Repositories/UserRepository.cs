@@ -149,15 +149,15 @@ namespace FreKE.Persistence.Repositories
             return result;
         }
 
-        public async Task<List<Job>> GetJobUserAsync(Guid id)
+        public async Task<List<GetUserJobTakenDto>> GetJobUserAsync(Guid id)
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
 
-            var query = @"SELECT * FROM Jobs WHERE EmployerId = @id";
+            var query = @"SELECT * FROM get_employer_jobs(@id)";
 
             var parameters = new { id };
 
-            var result = await connection.QueryAsync<Job>(query, parameters);
+            var result = await connection.QueryAsync<GetUserJobTakenDto>(query, parameters);
 
             return result.ToList();
         }
@@ -177,24 +177,7 @@ namespace FreKE.Persistence.Repositories
         {
             await using var connection = await _dbHelper.GetNpgSqlConnection();
 
-            var query = @"select
-                ub.id as UserId,
-                ub.name as UserName,
-                ub.surname as UserSurname,
-
-                c.id as CommentId,
-                c.content as Content,
-                
-                
-                ut.id as CommentUserId,
-                ut.name as CommentUserName,
-                ut.surname as CommentUserSurname
-
-                from users ub left join Comments c
-                                ON ub.id = c.commentedbyid
-                            left join users ut
-                                ON ut.id = c.commentedtargetid
-                where ub.id=@id";
+            var query = @"select * from vw_user_comments v where v.userid=@id";
 
             var parameters = new { id = id };
             var result = await _dbHelper.QueryAsync<UserCommentDTO>(query, parameters);

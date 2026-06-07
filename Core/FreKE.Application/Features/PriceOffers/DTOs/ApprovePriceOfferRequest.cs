@@ -8,7 +8,7 @@ namespace FreKE.Application.Features.PriceOffers.DTOs
 {
     public class ApprovePriceOfferRequest
     {
-        public Guid Id { get; set; }
+        public Guid OfferId { get; set; }
         public Guid JobId { get; set; }
 
     }

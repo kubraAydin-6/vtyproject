@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p8s8zaE2slY=",
+  "dgSpecHash": "g4SM0ItuYuk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj",
+  "projectFilePath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Core\\FreKE.Application\\FreKE.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kübra\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\kübra\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",

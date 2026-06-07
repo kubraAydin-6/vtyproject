@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I4HCGH4lcQQ=",
+  "dgSpecHash": "Sl8X+B5owOk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kübra\\Desktop\\vtyproject\\Core\\FreKE.Domain\\FreKE.Domain.csproj",
+  "projectFilePath": "C:\\Users\\kübra\\Desktop\\PROJELER\\vtyproject\\Core\\FreKE.Domain\\FreKE.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kübra\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\kübra\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512"

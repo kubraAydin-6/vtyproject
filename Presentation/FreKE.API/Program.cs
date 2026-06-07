@@ -16,6 +16,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddPersistenceServices(builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddProviderServices(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);
@@ -67,6 +78,7 @@ builder.Services.AddSwaggerGen(option =>
 });
 
 var app = builder.Build();
+app.UseCors("AllowReact");
 builder.Services.AddLogging();
 
 // Configure the HTTP request pipeline.
